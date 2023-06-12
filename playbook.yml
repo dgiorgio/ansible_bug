@@ -1,0 +1,15 @@
+---
+
+- hosts: localhost
+  connection: local
+  vars:
+    ANSIBLE_ROLES_PATH: "./roles"
+    run_role1: true # set to 'false' to see the bug
+    run_role2: true
+
+  roles:
+    - role: role1
+      when: run_role1 is defined and run_role1
+
+    - role: role2
+      when: run_role2 is defined and run_role2
